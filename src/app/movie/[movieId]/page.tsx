@@ -1,7 +1,9 @@
 "use client"
+
 import { SEAT, SEAT_STATUS, THEATER_SEATS } from "@/mockData/theaterSeats"
 import Image from "next/image"
 import { useState } from "react"
+
 import TicketCart from "./(components)/cart"
 import ChooseDate from "./(components)/dateSelection"
 

@@ -1,8 +1,10 @@
 "use client"
-import Image from "next/image"
-import { A11y, EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
+
 import { SLIDE_DATA } from "@/mockData/slideData"
+import Image from "next/image"
+import { A11y, Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+
 import UpcomingMovies from "./(sections)/upcomingMovies"
 
 export default function Home() {
