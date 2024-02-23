@@ -20,6 +20,7 @@
         "printWidth": 100
       }
     ],
+    "no-console": "warn",
     "no-unused-vars": "error",
     "no-constant-binary-expression": "warn",
     "no-new-native-nonconstructor": "warn",
