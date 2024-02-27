@@ -1,3 +1,4 @@
+import Providers from "@/redux/providers"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "swiper/css"
@@ -21,13 +22,15 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>
-				<section className="bg-black overflow-x-hidden">
-					{children}
-					<Footer />
-				</section>
-			</body>
-		</html>
+		<Providers>
+			<html lang="en">
+				<body className={inter.className}>
+					<section className="bg-black overflow-x-hidden">
+						{children}
+						<Footer />
+					</section>
+				</body>
+			</html>
+		</Providers>
 	)
 }
