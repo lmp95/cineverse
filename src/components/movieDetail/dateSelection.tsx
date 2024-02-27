@@ -2,15 +2,22 @@ import { convertDateFormat } from "@/helpers"
 import { MONTHS, SHOW_TIMES } from "@/mockData/theaterSeats"
 import { setDate, setTime } from "@/redux/cart"
 import dayjs, { Dayjs } from "dayjs"
-import { useState } from "react"
+import { useMemo, useState } from "react"
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import { useDispatch } from "react-redux"
 
+import IconButton from "../common/IconButton"
+
 function ChooseDate() {
-	const currentDate = dayjs()
+	const [currentDate, setCurrentDate] = useState(dayjs())
 	const dispatch = useDispatch()
-	const dateList = Array.from({ length: 7 }).map((_, i) => currentDate.add(i, "day"))
 	const [selectedDate, setSelectedDate] = useState<Dayjs>()
 	const [selectedTime, setSelectedTime] = useState<string>()
+
+	const dateList = useMemo(
+		() => Array.from({ length: 7 }).map((_, i) => currentDate.add(i, "day")),
+		[currentDate]
+	)
 
 	const updateSelectedTime = (date: string) => {
 		setSelectedTime(date)
@@ -22,26 +29,45 @@ function ChooseDate() {
 		dispatch(setDate(formattedDate))
 	}
 
+	const goPrevDate = () => {
+		if (dayjs(currentDate).isBefore()) {
+			return
+		}
+		const startDate = currentDate.subtract(7, "day")
+		setCurrentDate(startDate)
+	}
+
+	const goNextDate = () => {
+		const startDate = currentDate.add(7, "day")
+		setCurrentDate(startDate)
+	}
+
 	return (
 		<>
-			<div className="flex flex-row hover:cursor-pointer justify-between overflow-y-auto gap-3">
-				{dateList.map((date) => {
-					const day = date.date()
-					const month = date.month() + 1
-					let color = "bg-transparent"
+			<div className="flex flex-row items-center gap-2">
+				<IconButton icon={<IoIosArrowBack size={24} />} onClick={goPrevDate} />
+				<div className="flex-1 flex flex-row hover:cursor-pointer justify-between overflow-y-auto gap-3">
+					{dateList.map((date) => {
+						const day = date.date()
+						const month = date.month() + 1
+						let color = "bg-transparent"
 
-					if (selectedDate?.date() === date.date()) color = "bg-red-500"
+						if (selectedDate?.date() === date.date()) color = "bg-red-500"
 
-					return (
-						<div
-							key={day}
-							className={`${color} transition-all duration-200 hover:bg-red-500 hover:border-white border-red-500 border-[1px] p-3 flex items-center rounded-md flex-col`}
-							onClick={() => updateSelectedDate(date)}>
-							<p>{day}</p>
-							<p className="text-xs pt-2">{MONTHS[month as keyof typeof MONTHS]}</p>
-						</div>
-					)
-				})}
+						return (
+							<div
+								key={day}
+								className={`${color} min-w-[56px] transition-all duration-200 hover:bg-red-500 hover:border-white border-red-500 border-[1px] p-3 flex items-center rounded-md flex-col`}
+								onClick={() => updateSelectedDate(date)}>
+								<p>{day}</p>
+								<p className="text-xs pt-2">
+									{MONTHS[month as keyof typeof MONTHS]}
+								</p>
+							</div>
+						)
+					})}
+				</div>
+				<IconButton icon={<IoIosArrowForward size={24} />} onClick={goNextDate} />
 			</div>
 			<div className="flex flex-row justify-between mt-6">
 				{SHOW_TIMES.map((showTime) => (
