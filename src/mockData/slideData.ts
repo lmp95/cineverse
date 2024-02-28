@@ -1,12 +1,18 @@
-export const SLIDE_DATA = [
+import { ISlide } from "@/interfaces/slide.interface"
+
+export const SLIDE_DATA: ISlide[] = [
 	{
+		name: "Soul",
 		alt: "Soul",
 		path: "/images/soul.jpg",
+		genre: ["Animation", "Family", "Comedy", "Fantasy"],
 		desc: "Joe is a middle-school band teacher whose life hasn't quite gone the way he expected. His true passion is jazz -- and he's good. But when he travels to another realm to help someone find their passion, he soon discovers what it means to have soul.",
 	},
 	{
+		name: "Ratatouille",
 		alt: "Ratatouille",
 		path: "/images/ratatouille.jpeg",
+		genre: ["Animation", "Family", "Comedy", "Fantasy"],
 		desc: "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.",
 	},
 ]

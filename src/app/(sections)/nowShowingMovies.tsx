@@ -4,10 +4,10 @@ import Link from "next/link"
 import { A11y, Autoplay } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
-function UpcomingMovies() {
+function NowShowingMovies() {
 	return (
 		<section className="m-2">
-			<h2 className="p-4 text-2xl font-semibold">UPCOMING MOVIES</h2>
+			<h2 className="p-4 text-2xl font-semibold">NOW SHOWING MOVIES</h2>
 			<Swiper
 				modules={[Autoplay, A11y]}
 				spaceBetween={12}
@@ -36,4 +36,4 @@ function UpcomingMovies() {
 	)
 }
 
-export default UpcomingMovies
+export default NowShowingMovies

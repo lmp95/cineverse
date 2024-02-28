@@ -4,6 +4,7 @@ import IconButton from "@/components/common/IconButton"
 import TicketCart from "@/components/movieDetail/cart"
 import SeatSelection from "@/components/movieDetail/seatSelection"
 import { MOVIE_DETAIL_INFO } from "@/mockData/movieDetails"
+import Error from "next/error"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { IoArrowBack } from "react-icons/io5"
@@ -13,6 +14,11 @@ import ChooseDate from "../../../components/movieDetail/dateSelection"
 export default function MovieDetail({ params }: { params: { movieId: string } }) {
 	const router = useRouter()
 	const movieDetail = MOVIE_DETAIL_INFO[params.movieId]
+
+	if (!movieDetail) {
+		return <Error statusCode={404} />
+	}
+
 	const { path } = movieDetail
 
 	return (
