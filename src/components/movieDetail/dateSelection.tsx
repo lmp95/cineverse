@@ -1,18 +1,19 @@
 import { convertDateFormat } from "@/helpers"
 import { MONTHS, SHOW_TIMES } from "@/mockData/theaterSeats"
-import { setDate, setTime } from "@/redux/cart"
+import { getTicketState, setDate, setTime } from "@/redux/cart"
 import dayjs, { Dayjs } from "dayjs"
 import { useMemo, useState } from "react"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import IconButton from "../common/IconButton"
 
 function ChooseDate() {
 	const [currentDate, setCurrentDate] = useState(dayjs())
 	const dispatch = useDispatch()
-	const [selectedDate, setSelectedDate] = useState<Dayjs>()
-	const [selectedTime, setSelectedTime] = useState<string>()
+	const { date, time } = useSelector(getTicketState)
+	const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs(date) || "")
+	const [selectedTime, setSelectedTime] = useState<string>(time || "")
 
 	const dateList = useMemo(
 		() => Array.from({ length: 7 }).map((_, i) => currentDate.add(i, "day")),

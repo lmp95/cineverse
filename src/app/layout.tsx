@@ -1,6 +1,8 @@
 import Providers from "@/redux/providers"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import "swiper/css"
 import "swiper/css/effect-fade"
 import "swiper/css/navigation"
@@ -25,6 +27,7 @@ export default function RootLayout({
 		<Providers>
 			<html lang="en">
 				<body className={inter.className}>
+					<ToastContainer hideProgressBar stacked position="top-center" />
 					<section className="bg-black overflow-x-hidden">
 						{children}
 						<Footer />

@@ -4,7 +4,7 @@ function IconButton({ icon, ...props }: IconButtonProps): JSX.Element {
 	return (
 		<button
 			{...props}
-			className={`text-red-500 p-2 rounded-full hover:text-white/75 ${props.className}`}>
+			className={`text-red-500 p-2 rounded-full hover:text-white/50 ${props.className}`}>
 			{icon}
 		</button>
 	)

@@ -9,6 +9,7 @@ import {
 	MdOutlineLocalMovies,
 } from "react-icons/md"
 import { useSelector } from "react-redux"
+import { toast } from "react-toastify"
 
 import FilledButton from "../common/FilledButton"
 import Typography from "../common/Typography"
@@ -61,6 +62,19 @@ function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 	const { seats, date, time } = useSelector(getTicketState)
 	const { name, path } = movieDetail
 
+	const makePayment = () => {
+		if (seats.length === 0) {
+			return toast.error("Please select seats!")
+		}
+		if (!date) {
+			return toast.error("Please select date!")
+		}
+		if (!time) {
+			return toast.error("Please select time!")
+		}
+		router.push("/payment")
+	}
+
 	return (
 		<div className="flex-[0.3] flex flex-col text-black items-stretch m-12">
 			<div className="flex-1 flex flex-col rounded-xl bg-white border-l-[0.5px] border-gray-700 p-6">
@@ -99,7 +113,7 @@ function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 								))}
 							</div>
 						) : (
-							<p className="text-sm">Please select seats.</p>
+							<p className="text-sm">-</p>
 						)}
 					</div>
 					<TicketInfo
@@ -123,7 +137,7 @@ function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 			<div className="bg-white relative p-4 rounded-xl border-t-gray-600 border-dashed border-t-[1px]">
 				<div className="absolute -top-[18px] -left-[8px] bg-black -ml-[16px] w-[36px] h-[36px] rounded-full"></div>
 				<div className="absolute -top-[18px] -right-[8px] bg-black -mr-[16px] w-[36px] h-[36px] rounded-full"></div>
-				<FilledButton onClick={() => router.push("/payment")} variant="primary">
+				<FilledButton onClick={() => makePayment()} variant="primary">
 					Checkout
 				</FilledButton>
 			</div>

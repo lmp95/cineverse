@@ -1,14 +1,15 @@
 import { SEAT, SEAT_STATUS, THEATER_SEATS } from "@/mockData/theaterSeats"
-import { setSeats } from "@/redux/cart"
+import { getTicketState, setSeats } from "@/redux/cart"
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 type SelectedSeats = SEAT[]
 const MAX_SEATS = 5
 
 function SeatSelection() {
 	const dispatch = useDispatch()
-	const [selectedSeats, setSelectedSeats] = useState<SelectedSeats>([])
+	const { seats } = useSelector(getTicketState)
+	const [selectedSeats, setSelectedSeats] = useState<SelectedSeats>([...seats])
 
 	const addSeat = (seat: SEAT) => {
 		if (seat.status === SEAT_STATUS.AVAILABLE) {

@@ -1,7 +1,8 @@
 {
   "extends": "next/core-web-vitals",
   "plugins": [
-    "prettier"
+    "prettier",
+    "react-hooks"
   ],
   "globals": {
     "__DEV__": true
@@ -22,6 +23,7 @@
     ],
     "no-console": "warn",
     "no-unused-vars": "error",
+    "react-hooks/exhaustive-deps": "off",
     "no-constant-binary-expression": "warn",
     "no-new-native-nonconstructor": "warn",
     "no-self-compare": "warn",

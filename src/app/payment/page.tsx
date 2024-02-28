@@ -15,7 +15,7 @@ function Payment() {
 			<div className="flex flex-1 mx-72 flex-col gap-2">
 				<IconButton
 					onClick={() => router.back()}
-					className="hover:text-gray-600 p-0 py-2 duration-200 text-red-500 self-start"
+					className="p-0 py-2 hover:text-black self-start"
 					icon={<IoArrowBack size={24} />}
 				/>
 				<Typography variant="heading2" bold>

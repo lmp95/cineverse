@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes } from "react"
 
 function FilledButton({ variant = "default", ...props }: FilledButtonProps) {
 	let bgColor = "bg-gray-500"
+	const isDisabled = props.disabled
 
 	switch (variant) {
 		case "primary":
@@ -12,11 +13,13 @@ function FilledButton({ variant = "default", ...props }: FilledButtonProps) {
 			break
 	}
 
+	if (isDisabled) bgColor = "bg-gray-300"
+
 	return (
 		<button
 			type="button"
 			{...props}
-			className={`w-full tracking-wider font-semibold mt-4 rounded-md ${bgColor} text-white p-3`}>
+			className={`w-full cursor-pointer tracking-wider font-semibold mt-4 rounded-md ${bgColor} text-white p-3`}>
 			{props.children}
 		</button>
 	)
