@@ -27,7 +27,7 @@ function NowShowingMovies() {
 									Buy Ticket
 								</Link>
 							</div>
-							<Image src={path} alt={alt} fill className="rounded-lg" />
+							<Image src={path} alt={alt} sizes="100%" fill className="rounded-lg" />
 						</div>
 					</SwiperSlide>
 				))}

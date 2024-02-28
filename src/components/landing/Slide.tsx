@@ -8,8 +8,8 @@ function Slide({ slideData }: SlideProps) {
 
 	return (
 		<>
-			<div className="flex w-screen h-screen">
-				<Image className="-z-10" src={path} alt={alt} fill />
+			<div className="flex relative w-screen h-screen">
+				<Image className="-z-10" src={path} alt={alt} fill sizes="100%" />
 				<div className="self-end h-1/2 bg-gradient-to-b from-transparent to-black w-full px-32">
 					<Typography uppercase variant="heading1" bold className="text-white">
 						{name}

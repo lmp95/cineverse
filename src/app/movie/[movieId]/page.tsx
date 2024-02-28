@@ -33,7 +33,7 @@ export default function MovieDetail({ params }: { params: { movieId: string } })
 				<div className="max-w-[35%] m-auto py-[75px]">
 					<ChooseDate />
 					<div className="h-[50px] mb-6 relative">
-						<Image src="/images/theater_screen.svg" alt="Screen" fill />
+						<Image sizes="100%" src="/images/theater_screen.svg" alt="Screen" fill />
 					</div>
 					<SeatSelection />
 					<div className="flex flex-row text-xs gap-3 mt-6 justify-center">
