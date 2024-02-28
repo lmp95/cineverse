@@ -15,6 +15,7 @@ function FilledButton({ variant = "default", ...props }: FilledButtonProps) {
 	return (
 		<button
 			type="button"
+			{...props}
 			className={`w-full tracking-wider font-semibold mt-4 rounded-md ${bgColor} text-white p-3`}>
 			{props.children}
 		</button>

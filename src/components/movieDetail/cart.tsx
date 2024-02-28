@@ -1,6 +1,7 @@
 import { IMovie } from "@/interfaces/movie.interface"
 import { getTicketState } from "@/redux/cart"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import {
 	MdCalendarToday,
 	MdOutlineAccessTime,
@@ -56,6 +57,7 @@ export function RowData({
 
 function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 	const ticketPrice = 5.99
+	const router = useRouter()
 	const { seats, date, time } = useSelector(getTicketState)
 	const { name, path } = movieDetail
 
@@ -121,7 +123,9 @@ function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 			<div className="bg-white relative p-4 rounded-xl border-t-gray-600 border-dashed border-t-[1px]">
 				<div className="absolute -top-[18px] -left-[8px] bg-black -ml-[16px] w-[36px] h-[36px] rounded-full"></div>
 				<div className="absolute -top-[18px] -right-[8px] bg-black -mr-[16px] w-[36px] h-[36px] rounded-full"></div>
-				<FilledButton variant="primary">Checkout</FilledButton>
+				<FilledButton onClick={() => router.push("/payment")} variant="primary">
+					Checkout
+				</FilledButton>
 			</div>
 		</div>
 	)
