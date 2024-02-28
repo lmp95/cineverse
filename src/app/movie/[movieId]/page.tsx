@@ -24,10 +24,10 @@ export default function MovieDetail({ params }: { params: { movieId: string } })
 	return (
 		<section style={{ backgroundImage: `url(${path})` }} className={`relative flex bg-cover`}>
 			<div className="absolute z-[1] w-full h-full bg-gradient-to-b from-black/75 to-black" />
-			<div className="z-10 flex w-full flex-row">
+			<div className="z-10 flex w-full pt-[65px] flex-row">
 				<IconButton
 					onClick={() => router.back()}
-					className="ml-6 mt-6 text-white self-start"
+					className="ml-6 mt-6 self-start"
 					icon={<IoArrowBack size={24} />}
 				/>
 				<div className="max-w-[35%] m-auto py-[75px]">

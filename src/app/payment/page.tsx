@@ -11,11 +11,11 @@ function Payment() {
 	const router = useRouter()
 
 	return (
-		<div className="flex flex-row gap-x-4 bg-white p-12 items-start">
+		<div className="flex flex-row gap-x-4 bg-white p-12 pt-[86px] items-start">
 			<div className="flex flex-1 mx-72 flex-col gap-2">
 				<IconButton
 					onClick={() => router.back()}
-					className="p-0 py-2 hover:text-black self-start"
+					className="p-0 py-2 self-start"
 					icon={<IoArrowBack size={24} />}
 				/>
 				<Typography variant="heading2" bold>

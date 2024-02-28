@@ -9,6 +9,7 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 import Footer from "./(sections)/footer"
+import Header from "./(sections)/header"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -26,7 +27,8 @@ export default function RootLayout({
 	return (
 		<Providers>
 			<html lang="en">
-				<body className={inter.className}>
+				<body className={`${inter.className} overflow-x-hidden`}>
+					<Header />
 					<ToastContainer hideProgressBar stacked position="top-center" />
 					<section className="bg-black overflow-x-hidden">
 						{children}
