@@ -1,10 +1,10 @@
+import { MAX_SEATS } from "@/constants"
 import { SEAT, SEAT_STATUS, THEATER_SEATS } from "@/mockData/theaterSeats"
 import { getTicketState, setSeats } from "@/redux/cart"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 type SelectedSeats = SEAT[]
-const MAX_SEATS = 5
 
 function SeatSelection() {
 	const dispatch = useDispatch()

@@ -1,3 +1,4 @@
+import { calculateTotalPrice } from "@/helpers"
 import { SEAT } from "@/mockData/theaterSeats"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
@@ -10,6 +11,9 @@ export interface TicketState {
 	seats: SEAT[]
 	time: string | null
 	date: string | null
+	subtotal: number
+	tax: number
+	total: number
 }
 
 const initialState: TicketState = {
@@ -17,6 +21,9 @@ const initialState: TicketState = {
 	seats: [],
 	time: null,
 	date: null,
+	subtotal: 0,
+	tax: 0,
+	total: 0,
 }
 
 export const ticketSlice = createSlice({
@@ -24,6 +31,10 @@ export const ticketSlice = createSlice({
 	initialState,
 	reducers: {
 		setSeats: (state, actions: PayloadAction<SEAT[]>) => {
+			const { subtotal, taxAmount, total } = calculateTotalPrice(actions.payload.length)
+			state.subtotal = subtotal
+			state.tax = taxAmount
+			state.total = total
 			state.seats = actions.payload
 		},
 		setTime: (state, actions: PayloadAction<string>) => {

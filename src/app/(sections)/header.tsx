@@ -17,7 +17,7 @@ function Header() {
 
 	return (
 		<header
-			className={`fixed z-[99] ${scrollPosition > 50 ? "bg-black/70" : "bg-transparent"}  w-screen h-[96px] flex items-center gap-x-2 px-4`}>
+			className={`fixed z-[99] ${scrollPosition > 50 ? "bg-black/70" : "bg-transparent"} duration-500  w-screen h-[96px] flex items-center gap-x-2 px-4`}>
 			<Image src="/images/logo.png" alt="Cineverse" width={80} height={80} />
 			<Typography variant="title" className="text-white" uppercase bold>
 				Cineverse

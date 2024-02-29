@@ -42,14 +42,16 @@ export function RowData({
 	label,
 	value,
 	isBold = false,
+	isLarge,
 }: {
 	label: string
 	value: string
 	isBold?: boolean
+	isLarge?: boolean
 }) {
 	return (
 		<div
-			className={`${isBold ? "font-bold" : "font-normal"} my-1 text-sm flex flex-row items-center justify-between`}>
+			className={`${isBold ? "font-bold" : "font-normal"} ${isLarge ? "text-lg" : "text-sm"} my-[0.35rem] flex flex-row items-center justify-between`}>
 			<p>{label}</p>
 			<p>{value}</p>
 		</div>
@@ -57,9 +59,8 @@ export function RowData({
 }
 
 function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
-	const ticketPrice = 5.99
 	const router = useRouter()
-	const { seats, date, time } = useSelector(getTicketState)
+	const { seats, date, time, subtotal, tax, total } = useSelector(getTicketState)
 	const { name, path } = movieDetail
 
 	const makePayment = () => {
@@ -127,12 +128,9 @@ function TicketCart({ movieDetail }: { movieDetail: IMovie }) {
 						icon={<MdOutlineAccessTime className="text-red-500" />}
 					/>
 				</div>
-				<RowData label="Subtotal" value={`$ ${(seats.length * ticketPrice).toFixed(2)}`} />
-				<RowData
-					label="Total"
-					isBold
-					value={`$ ${(seats.length * ticketPrice).toFixed(2)}`}
-				/>
+				<RowData label="Tax" value={`$ ${tax}`} />
+				<RowData label="Subtotal" value={`$ ${subtotal}`} />
+				<RowData label="Total" isLarge isBold value={`$ ${total}`} />
 			</div>
 			<div className="bg-white relative p-4 rounded-xl border-t-gray-600 border-dashed border-t-[1px]">
 				<div className="absolute -top-[18px] -left-[8px] bg-black -ml-[16px] w-[36px] h-[36px] rounded-full"></div>
